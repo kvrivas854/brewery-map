@@ -77,7 +77,7 @@ $("search-button").on("click", function () {
     });
 
   var byState = $(this).attr("ui dropdown");
-  var queryURL = "https://api.openbrewerydb.org/breweries?by_state=" + byState;
+  var queryURL = "https://api.openbrewerydb.org/breweries?by_state=" + byState + "by-zipcode=" + zipcode + "by-state=" +state;
 
   $.ajax({
     url: queryURL,
