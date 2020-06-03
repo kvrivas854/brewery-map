@@ -1,4 +1,12 @@
 
+// This is my JavaScript File
+$(document).ready(
+  function () {
+    $('.ui.dropdown')
+    .dropdown();
+   });
+
+
 // add click event listener to "search-button"
 
 $("#search-button").on("click", function (e) {
@@ -11,14 +19,15 @@ $("#search-button").on("click", function (e) {
   console.log(byCity)
   console.log(byState)
 
+
 $("#search-button").on("click", function(){
 var cityName = $("#city-input").val().trim();
 var stateName = $(option.text.trim);
 var postalCode = $("#zipcode-input");
 
   $.ajax({
-    url: "https://api.openbrewerydb.org/breweries?by_city=" + cityName,
-    method: "get",
+  url: "https://api.openbrewerydb.org/breweries?by_city=" + cityName,
+  method: "get",
   }).then(function (res) {
     console.log(res);
   });
