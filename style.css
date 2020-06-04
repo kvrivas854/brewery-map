@@ -1,2 +1,6 @@
 This is my CSS file
 #mapid { height: 300px; }
+
+body{
+    margin: 10px;
+}
