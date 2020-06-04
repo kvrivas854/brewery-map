@@ -21,6 +21,7 @@ $("#search-button").on("click", function (e) {
   console.log(byCity)
   console.log(byState)
   console.log(byZip)
+  console.log(queryURL)
  
   if ((byCity !== "" && byState !== "") && byZip === "") {
 
