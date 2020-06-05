@@ -3,8 +3,9 @@
 $(document).ready(
   function () {
     $('.ui.dropdown')
-    .dropdown();
+    .dropdown(itemList);
    });
+
 
    var coordinatesArray = []
 
@@ -20,7 +21,7 @@ $(document).ready(
   //   console.log("Your coordinates are Latitude: " + lat + " Longitude " + lon);
   // };
 
-
+var itemList = document.getElementsByClassName(item);
 
 $("#search-button").on("click", function (e) {
   e.preventDefault()
