@@ -12,6 +12,7 @@ $(document).ready(
 
 $("#search-button").on("click", function (e) {
   e.preventDefault()
+  $(".warning").empty()
 
   var byCity = $("#city-input").val();
   var byState = $("#state-options").val();
@@ -22,7 +23,18 @@ $("#search-button").on("click", function (e) {
   console.log(byState)
   console.log(byZip)
   console.log(queryURL)
- 
+
+  // error message for when both city & state aren't inputted
+  if ((byCity ==="" &&byState!=="") || (byCity!==""&&byState==="")) {
+    let div = $("<div>")
+    div.attr("class","warning")
+    div.text("You must fill out state and city OR zip code")
+
+    $("#state-input").append(div)
+
+  }
+  
+  // if statement for search by city & state
   if ((byCity !== "" && byState !== "") && byZip === "") {
 
   $.ajax({
@@ -37,6 +49,7 @@ $("#search-button").on("click", function (e) {
 
         console.log()
 
+        // for loop to loop thru results and display on page
         for (var i = 0; i < response.length; i++) {
 
           var cityDiv = $("<div>");
@@ -51,7 +64,7 @@ $("#search-button").on("click", function (e) {
 
       });
   }
-
+  // if statement to search by zip code
   if ((byCity === "" && byState === "") && byZip !== "") {
 
     $.ajax({
@@ -66,6 +79,7 @@ $("#search-button").on("click", function (e) {
 
         console.log()
 
+        // for loop to loop thru results and display on page
         for (var i = 0; i < response.length; i++) {
 
           var cityDiv = $("<div>");
