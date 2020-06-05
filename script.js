@@ -3,10 +3,10 @@
 $(document).ready(
   function () {
     $('.ui.dropdown')
-    .dropdown();
+    .dropdown(itemList);
    });
 
-
+var itemList = document.getElementsByClassName(item);
 
 // add click event listener to "search-button"
 
