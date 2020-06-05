@@ -13,6 +13,8 @@
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
     crossorigin=""></script>
+    <!--Font Stylesheet-->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@900&display=swap" rel="stylesheet">
     <!--Semantic Stylesheet-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
     <!--External CSS-->
@@ -20,7 +22,7 @@
 </head>
 <body>
 
-
+<container>
    <div class="ui three item menu">
        <!--Header-->
        <h1>Brewery Map <i class="map marker alternate icon"></i></h1>
@@ -34,6 +36,7 @@
          Contact
        </a>
     </div>
+  </container>
        <!--Search Form-->
      <form class="ui form">
         <div class="ui floating dropdown labeled icon button">
@@ -47,44 +50,40 @@
               <div class="divider"></div>
               <div class="header">
                 <i class="tags icon"></i>
-                Tag Label
+                Choose:
               </div>
-              <div class="scrolling menu">
+              <div class="scrollingMenu">
                 <div class="item">
                   <div class="ui red empty circular label"></div>
                   Pet Friendly
                 </div>
                 <div class="item">
                   <div class="ui blue empty circular label"></div>
-                  Dine In
+                  Food Truck
                 </div>
                 <div class="item">
                   <div class="ui black empty circular label"></div>
-                    Take out
-                </div>
-                <div class="item">
-                  <div class="ui purple empty circular label"></div>
-                  Outdoor Seating 
-                </div>
-                <div class="item">
-                  <div class="ui orange empty circular label"></div>
-                  filler text
-                </div>
-                <div class="item">
-                  <div class="ui empty circular label"></div>
-                  filler text
-                </div>
-                <div class="item">
-                  <div class="ui yellow empty circular label"></div>
-                  filler text
-                </div>
-                <div class="item">
-                  <div class="ui pink empty circular label"></div>
-                  filler text
+                  Food Service
                 </div>
                 <div class="item">
                   <div class="ui green empty circular label"></div>
-                  filler text
+                  Tours
+                </div>
+                <div class="item">
+                  <div class="ui purple empty circular label"></div>
+                  Patio Seating
+                </div>
+                <div class="item">
+                  <div class="ui orange empty circular label"></div>
+                  Micro
+                </div>
+                <div class="item">
+                  <div class="ui yellow empty circular label"></div>
+                  Regional
+                </div>
+                <div class="item">
+                  <div class="ui pink empty circular label"></div>
+                  Brew pub
                 </div>
               </div>
             </div>
@@ -154,8 +153,8 @@
          <label>Search by Zip Code</label>
          <input type="text" name="zip-code" placeholder="Zip Code" id="zipcode-input">
        </div>
-       <button class="ui primary button" type="submit" id="search-button">Search</button>
-       <button class="ui button">Clear</button>
+       <button class="ui inverted black button" type="submit" id="search-button">Search</button>
+       <button class="ui inverted black button">Clear</button>
      </form>
      <br>
        <!--Search Results Go Here-->

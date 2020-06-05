@@ -1,6 +1,38 @@
 This is my CSS file
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@900&display=swap');
 #mapid { height: 300px; }
 
 body{
     margin: 10px;
+    background-color:white;
+}
+h1{ color:teal;
+    /* font-family: 'Russo One', sans-serif; */
+    font-family: 'Playfair Display SC', serif;
+}
+.ui.three.menu.item :hover{
+color:teal;
+}
+.ui.form{
+    margin:10px;
+    overflow: auto;
+    border-color:#BAB2B5;
+    border-style: double;
+    padding:10px;
+    background-color:darkgrey;
+}
+
+
+.scrollingMenu{
+padding:10px;
+margin:20px;
+}
+.ui.search.icon.input{
+padding-right:30px;
+}
+.search.icon{
+    padding-right: 100px;
+}
+.ui.inverted.black.button :hover{
+    color:teal;
 }
