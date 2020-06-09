@@ -33,6 +33,7 @@ $("#search-button").on("click", function (e) {
     $("#state-input").append(div)
 
   }
+
   
   // if statement for search by city & state
   if ((byCity !== "" && byState !== "") && byZip === "") {
