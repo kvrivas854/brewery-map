@@ -6,23 +6,12 @@ $(document).ready(
     .dropdown(itemList);
    });
 
-
    var coordinatesArray = []
 
    var lat=10;
    var lon=-90;
     
-  //   navigator.geolocation.getCurrentPosition(showPosition);
-  //   function showPosition(position) {
-  //   // Grab coordinates from the given object
-  //   lat = position.coords.latitude;
-  //   lon = position.coords.longitude;
-  
-  //   console.log("Your coordinates are Latitude: " + lat + " Longitude " + lon);
-  // };
-
-var itemList = document.getElementsByClassName(item);
-
+  // Search button click event
 $("#search-button").on("click", function (e) {
   e.preventDefault()
   $(".warning").empty()
@@ -37,6 +26,10 @@ $("#search-button").on("click", function (e) {
   console.log(byZip)
   console.log(queryURL)
 
+ 
+  // Searches by city & state
+
+
   // error message for when both city & state aren't inputted
   if ((byCity ==="" &&byState!=="") || (byCity!==""&&byState==="")) {
     let div = $("<div>")
@@ -49,6 +42,7 @@ $("#search-button").on("click", function (e) {
 
   
   // if statement for search by city & state
+
   if ((byCity !== "" && byState !== "") && byZip === "") {
 
   $.ajax({
@@ -57,6 +51,7 @@ $("#search-button").on("click", function (e) {
   })
 
       .then(function (response) {
+        $("#search-results").empty();
         console.log(queryURL);
 
         console.log(response);
@@ -66,14 +61,46 @@ $("#search-button").on("click", function (e) {
         // for loop to loop thru results and display on page
         for (var i = 0; i < response.length; i++) {
 
-          var cityDiv = $("<div>");
+          // Creating the cards if the response has a website URL
+          if(response[i].website_url) {
+          var temp = `<div class="ui cards">
+        <div class="card">
+          <div class="content">
+    
+            <div class="header">
+              ${response[i].name}
+            </div>
+            <div class="description">
+              Phone number: ${response[i].phone}
+              <br>
+              Address: ${response[i].street}
+            </div>
+          </div>
+          
+              <a href=${response[i].website_url} class="ui basic green button" target="_blank">Visit Website</a>
+        </div>`
+          }
+          // Creating the cards if the response does not have a website URL
+          else{
+            var temp = `<div class="ui cards">
+        <div class="card">
+          <div class="content">
+    
+            <div class="header">
+              ${response[i].name}
+            </div>
+            <div class="description">
+            Phone number: ${response[i].phone}
+            <br>
+            Address: ${response[i].street}
+            </div>
+          </div>
+        </div>`
+          }
 
-          var cityPara = $("<p>").text(response[i].name);
+          $("#search-results").append(temp);
 
-          cityDiv.append(cityPara);
-
-          $("#search-results").append(cityDiv);
-
+          // Sets the coordinates for the markers
           var obj = {
             lat: response[i].latitude,
             lon: response[i].longitude
@@ -87,8 +114,6 @@ $("#search-button").on("click", function (e) {
  
 function addMarker () {
   
-
-  
   for (var i=0; i < coordinatesArray.length; i++) {
   
   lat = coordinatesArray[i].lat;
@@ -97,8 +122,12 @@ function addMarker () {
   var marker = L.marker([lat, lon]).addTo(mymap);
 }}};
 
+
+// Search by Zip code
+
   
   // if statement to search by zip code
+
   if ((byCity === "" && byState === "") && byZip !== "") {
 
     $.ajax({
@@ -107,6 +136,7 @@ function addMarker () {
     })
 
       .then(function (response) {
+        $("#search-results").empty();
         console.log(queryURL);
 
         console.log(response);
@@ -116,23 +146,57 @@ function addMarker () {
         // for loop to loop thru results and display on page
         for (var i = 0; i < response.length; i++) {
 
-          var cityDiv = $("<div>");
+          // Creating the cards if the response has a website URL
+          if(response[i].website_url) {
+          var temp = `<div class="ui cards">
+        <div class="card">
+          <div class="content">
+    
+            <div class="header">
+              ${response[i].name}
+            </div>
+            <div class="description">
+            Phone number: ${response[i].phone}
+            <br>
+            Address: ${response[i].street}
+            </div>
+          </div>
+          
+              <a href=${response[i].website_url} class="ui basic green button" target="_blank">Visit Website</a>
+        </div>`
+          }
+          // Creating the cards if the response does not have a website URL
+          else{
+            var temp = `<div class="ui cards">
+        <div class="card">
+          <div class="content">
+    
+            <div class="header">
+              ${response[i].name}
+            </div>
+            <div class="description">
+            Phone number: ${response[i].phone}
+            <br>
+            Address: ${response[i].street}
+            </div>
+          </div>
+        </div>`
+          }
 
-          var cityPara = $("<p>").text(response[i].name);
+          $("#search-results").append(temp);
 
-          cityDiv.append(cityPara);
-
-          $("#search-results").append(cityDiv);
-
+          // Sets the coordinates for the markers
+          var obj = {
+            lat: response[i].latitude,
+            lon: response[i].longitude
+          }
+          coordinatesArray.push(obj)
         }
-
-        
+        addMarker() 
 
       });
-
-    }
-    
-  })
+   }
+});
 
     // Leaflet Formatting
 
@@ -145,5 +209,3 @@ function addMarker () {
     zoomOffset: -1,
     accessToken: 'pk.eyJ1Ijoic2FyYWhzaGVhMTIiLCJhIjoiY2thdHNobmR4MGRxcTJxb2Nvc2l2MWUxOSJ9.Zlvr0sq1CQFluFfvrrg5UQ'
     }).addTo(mymap);
-
-
