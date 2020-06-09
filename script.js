@@ -3,12 +3,25 @@
 $(document).ready(
   function () {
     $('.ui.dropdown')
-    .dropdown();
+    .dropdown(itemList);
    });
 
 
+   var coordinatesArray = []
 
-// add click event listener to "search-button"
+   var lat=10;
+   var lon=-90;
+    
+  //   navigator.geolocation.getCurrentPosition(showPosition);
+  //   function showPosition(position) {
+  //   // Grab coordinates from the given object
+  //   lat = position.coords.latitude;
+  //   lon = position.coords.longitude;
+  
+  //   console.log("Your coordinates are Latitude: " + lat + " Longitude " + lon);
+  // };
+
+var itemList = document.getElementsByClassName(item);
 
 $("#search-button").on("click", function (e) {
   e.preventDefault()
@@ -61,10 +74,30 @@ $("#search-button").on("click", function (e) {
 
           $("#search-results").append(cityDiv);
 
+          var obj = {
+            lat: response[i].latitude,
+            lon: response[i].longitude
+          }
+          coordinatesArray.push(obj)
         }
-
+        addMarker() 
       });
   }
+
+ 
+function addMarker () {
+  
+
+  
+  for (var i=0; i < coordinatesArray.length; i++) {
+  
+  lat = coordinatesArray[i].lat;
+  lon = coordinatesArray[i].lon;
+    if (lat !== null && lon !== null) {
+  var marker = L.marker([lat, lon]).addTo(mymap);
+}}};
+
+  
   // if statement to search by zip code
   if ((byCity === "" && byState === "") && byZip !== "") {
 
@@ -93,20 +126,24 @@ $("#search-button").on("click", function (e) {
 
         }
 
+        
+
       });
 
     }
-
+    
   })
 
-  // Leaflet Formatting
-  var mymap = L.map('mapid').setView([35.227085, -80.843124], 13);
-  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-  maxZoom: 18,
-  id: 'mapbox/streets-v11',
-  tileSize: 512,
-  zoomOffset: -1,
-  accessToken: 'pk.eyJ1Ijoic2FyYWhzaGVhMTIiLCJhIjoiY2thdHNobmR4MGRxcTJxb2Nvc2l2MWUxOSJ9.Zlvr0sq1CQFluFfvrrg5UQ'
-  }).addTo(mymap);
+    // Leaflet Formatting
+
+    var mymap = L.map('mapid').setView([lat, lon], 13);
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1Ijoic2FyYWhzaGVhMTIiLCJhIjoiY2thdHNobmR4MGRxcTJxb2Nvc2l2MWUxOSJ9.Zlvr0sq1CQFluFfvrrg5UQ'
+    }).addTo(mymap);
+
 
