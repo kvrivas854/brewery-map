@@ -8,8 +8,9 @@ $(document).ready(
 
    var coordinatesArray = []
 
-   var lat=10;
-   var lon=-90;
+   var lat=40;
+   var lon=-98.5;
+   var zoom=4;
     
   // Search button click event
 $("#search-button").on("click", function (e) {
@@ -25,9 +26,6 @@ $("#search-button").on("click", function (e) {
   console.log(byState)
   console.log(byZip)
   console.log(queryURL)
-
- 
-  // Searches by city & state
 
 
   // error message for when both city & state aren't inputted
@@ -101,11 +99,17 @@ $("#search-button").on("click", function (e) {
           $("#search-results").append(temp);
 
           // Sets the coordinates for the markers
+          var nullCheck = response.latitude;
+          if (nullCheck !== null) {
           var obj = {
             lat: response[i].latitude,
             lon: response[i].longitude
           }
-          coordinatesArray.push(obj)
+          coordinatesArray.push(obj);
+          //L.map('mapid').setView(coordinatesArray[0], 13);
+          console.log(coordinatesArray[0]);
+          //L.map('mapid').flyTo(coordinatesArray[0], 13);
+          }
         }
         addMarker() 
       });
@@ -120,11 +124,12 @@ function addMarker () {
   lon = coordinatesArray[i].lon;
     if (lat !== null && lon !== null) {
   var marker = L.marker([lat, lon]).addTo(mymap);
+  // var popup = L.popup()
+  //   .setLatLng(latlng)
+  //   .setContent('<p>Hello world!<br />This is a nice popup.</p>')
+  //   .openOn(map);
+  //marker.bindPopup(popupContent).openPopup();
 }}};
-
-
-// Search by Zip code
-
   
   // if statement to search by zip code
 
@@ -200,7 +205,7 @@ function addMarker () {
 
     // Leaflet Formatting
 
-    var mymap = L.map('mapid').setView([lat, lon], 13);
+    var mymap = L.map('mapid').setView([lat, lon], zoom);
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
