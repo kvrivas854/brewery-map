@@ -25,25 +25,27 @@
  
   <!--Header-->
 <h1>Brewery Map <i class="map marker alternate icon"></i></h1>
-
+<div id="search-display">
 <container>
    <div class="ui attached stackable three item menu">
     <div class="ui container">
     
-       <a class="active item" data-tab="home">
+       <a class="active item" data-tab="home" id="search-tab">
         <i class="home icon"></i> Home
        </a>
-       <a class="item" data-tab="about">
+       <a class="item" data-tab="about" id="about-tab">
         <i class="beer icon"></i>About
       </a>
-      <a class="item" data-tab="contact">
+      <a class="item" data-tab="contact" id="contact-tab">
         <i class="mail icon"></i>Contact
       </a>
 
     </div>
   </div>
   </container>
+
   
+
   <div class="ui grid container">
     <div class="row">
     <div class="ten wide column" id="ten-column">
@@ -172,6 +174,83 @@
        <button class="ui black button" type="submit" id="search-button">Search</button>
        <button class="ui black button">Clear</button>
      </form>
+
+    
+    </div> 
+  </div>
+</div>
+</div>
+  <!--About-->
+  <div id="about-display">
+    <container>
+      <div class="ui attached stackable three item menu">
+       <div class="ui container">
+       
+          <a class="item" data-tab="home" id="search-tab">
+           <i class="home icon"></i> Home
+          </a>
+          <a class="active item" data-tab="about" id="about-tab">
+           <i class="beer icon"></i>About
+         </a>
+         <a class="item" data-tab="contact" id="contact-tab">
+           <i class="mail icon"></i>Contact
+         </a>
+   
+       </div>
+     </div>
+     </container>
+   <div class="ui vertical masthead center aligned segment">
+    <div class="ui text container">
+      <h2>Find Local Breweries Near You</h2>
+      <h3>It's easy to get started with Brewery Map</h3>
+    </div>
+    <br>
+    <!--Link Steps-->
+    <div class="ui steps">
+     <div class="link step">
+       <i class="map outline icon"></i>
+       <div class="content">
+         <div class="title">Search</div>
+         <div class="description">Search by city, state, or zip code.</div>
+       </div>
+     </div>
+     <div class="link step">
+       <i class="beer icon"></i>
+       <div class="content">
+         <div class="title">View Breweries</div>
+         <div class="description">Browse breweries by location</div>
+       </div>
+     </div>
+   </div>
+   </div>
+  </div>
+  <!--Contact-->
+  <div id="contact-display">
+    <container>
+      <div class="ui attached stackable three item menu">
+       <div class="ui container">
+       
+          <a class="item" data-tab="home" id="search-tab">
+           <i class="home icon"></i> Home
+          </a>
+          <a class="item" data-tab="about" id="about-tab">
+           <i class="beer icon"></i>About
+         </a>
+         <a class="active item" data-tab="contact" id="contact-tab">
+           <i class="mail icon"></i>Contact
+         </a>
+   
+       </div>
+     </div>
+     </container>
+   <div class="ui vertical masthead center aligned segment">
+    <div class="ui text container">
+      <h2>Contact Information</h2>
+      <h3>Link to GitHub Repo</h3>
+      <h4>List contributors</h4>
+    </div>
+
+
     </div>
   </div> 
      <div class="row">
@@ -179,8 +258,8 @@
         <div id="search-results" class="ui cards"></div>
        </div>
       </div>
+
     
-       <!--Search Results Go Here-->
        
   <!--jQuery-->
    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
