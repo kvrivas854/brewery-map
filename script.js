@@ -6,7 +6,6 @@ $(document).ready(
     $('.ui.dropdown')
     .dropdown(itemList);
    });
- 
 
    var coordinatesArray = []
 
