@@ -12,6 +12,7 @@ $(document).ready(
    var lat=40;
    var lon=-98.5;
    var zoom=4;
+   var breweryName = "";
     
   // Search button click event
 $("#search-button").on("click", function (e) {
@@ -147,10 +148,13 @@ function addMarker () {
 
         console.log(response);
 
-        console.log()
+      
 
         // for loop to loop thru results and display on page
         for (var i = 0; i < response.length; i++) {
+
+          breweryName = response[i];
+          console.log(breweryName);
 
           // Creating the cards if the response has a website URL
           if(response[i].website_url) {
@@ -191,13 +195,38 @@ function addMarker () {
 
           $("#search-results").append(temp);
 
-          // Sets the coordinates for the markers
+          
+
+          
+        }
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://us1.locationiq.com/v1/search.php?key=pk.5a1f2eca7f72d25b240f2c1c7c7ee282&q=" + breweryName.name + "," + breweryName.street + "," + breweryName.city + "," + breweryName.state + "&format=json",
+            "method": "GET"
+          }
+          
+          $.ajax(settings).done(function (response) {
+
+            for(l=0; l < response.length; l++){
+              console.log(response)
+              console.log(response[l]);
+              console.log(response[l].lat,",", response[l].lon)
+              // Sets the coordinates for the markers - now getting response lat,lon
           var obj = {
-            lat: response[i].latitude,
-            lon: response[i].longitude
+            lat: response[l].lat,
+            lon: response[l].lon
           }
           coordinatesArray.push(obj)
-        }
+          console.log(coordinatesArray)
+            }
+
+          
+            console.log(response[0].display_name, response[0].lat, response[0].lon);
+            addMarker();
+            
+          });
+
         addMarker() 
 
       });
