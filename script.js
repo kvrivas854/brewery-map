@@ -24,12 +24,6 @@ $("#search-button").on("click", function (e) {
   var byZip = $("#zipcode-input").val();
   var queryURL = "https://api.openbrewerydb.org/breweries?" + "by_city=" + byCity + "&by_state=" + byState + "&by_postal=" + byZip;
 
-  console.log(byCity)
-  console.log(byState)
-  console.log(byZip)
-  console.log(queryURL)
-
-
   // error message for when both city & state aren't inputted
   if ((byCity ==="" &&byState!=="") || (byCity!==""&&byState==="")) {
     let div = $("<div>")
@@ -37,10 +31,9 @@ $("#search-button").on("click", function (e) {
     div.text("You must fill out state and city OR zip code")
 
     $("#state-input").append(div)
-
   }
 
-  
+
   // if statement for search by city & state
 
   if ((byCity !== "" && byState !== "") && byZip === "") {
@@ -56,45 +49,41 @@ $("#search-button").on("click", function (e) {
 
         console.log(response);
 
-        console.log()
-
         // for loop to loop thru results and display on page
         for (var i = 0; i < response.length; i++) {
 
+          breweryName = response[i];
+          console.log(breweryName);
+
           // Creating the cards if the response has a website URL
           if(response[i].website_url) {
-          var temp = `
-        <div class="card">
-          <div class="content">
-    
-            <div class="header">
-              ${response[i].name}
-            </div>
-            <div class="description">
+            var temp = `<div class="card">
+            <div class="content">
+            <i class="right floated star icon"></i>
+              <div class="header">${response[i].name}</div>
+              <div class="meta"><a>${response[i].brewery_type}</a></div>
+              <div class="description">
               Phone number: ${response[i].phone}
               <br>
               Address: ${response[i].street}
+              </div>
             </div>
-          </div>
-          
               <a href=${response[i].website_url} class="ui basic green button" target="_blank">Visit Website</a>`
           }
           // Creating the cards if the response does not have a website URL
           else{
-            var temp = `
-        <div class="card">
-          <div class="content">
-    
-            <div class="header">
-              ${response[i].name}
+            var temp = `<div class="card">
+            <div class="content">
+            <i class="right floated star icon"></i>
+              <div class="header">${response[i].name}</div>
+              <div class="meta"><a>${response[i].brewery_type}</a></div>
+              <div class="description">
+              Phone number: ${response[i].phone}
+              <br>
+              Address: ${response[i].street}
+              </div>
             </div>
-            <div class="description">
-            Phone number: ${response[i].phone}
-            <br>
-            Address: ${response[i].street}
-            </div>
-          </div>
-        `
+              <a href=${response[i].website_url} class="ui basic green button" target="_blank">Visit Website</a>`
           }
 
           $("#search-results").append(temp);
@@ -138,21 +127,20 @@ $("#search-button").on("click", function (e) {
         }).addTo(mymap);
 
         function addMarker () {
-
+  
           for (var i=0; i < coordinatesArray.length; i++) {
           
           lat = coordinatesArray[i].lat;
           lon = coordinatesArray[i].lon;
+            if (lat !== null && lon !== null) {
           var marker = L.marker([lat, lon]).addTo(mymap);
-        }};
+        }}};
 
         addMarker();
         
       });
-    }
-
-        //addMarker() 
-      });
+      }
+    });
   }
 
   
@@ -170,8 +158,6 @@ $("#search-button").on("click", function (e) {
         console.log(queryURL);
 
         console.log(response);
-
-        
 
         // for loop to loop thru results and display on page
         for (var i = 0; i < response.length; i++) {
@@ -226,6 +212,7 @@ $("#search-button").on("click", function (e) {
               console.log(response)
               console.log(response[l]);
               console.log(response[l].lat,",", response[l].lon)
+              
               // Sets the coordinates for the markers - now getting response lat,lon
           var obj = {
             lat: response[l].lat,
@@ -261,8 +248,6 @@ $("#search-button").on("click", function (e) {
             addMarker();
             
           });
-
-        //addMarker() 
 
       });
    }
