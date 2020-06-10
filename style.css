@@ -1,29 +1,35 @@
 This is my CSS file
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@900&display=swap');
-#mapid { height: 300px; }
 
 body{
+    height:100%;
+    width:100;
     margin: 10px;
     background-color:white;
 }
 h1{ color:teal;
-    /* font-family: 'Russo One', sans-serif; */
+    text-align:center;
     font-family: 'Playfair Display SC', serif;
 }
-.ui.three.menu.item :hover{
+.ui.attached.stackable.three.item.menu :hover{
 color:teal;
 }
-.ui.form{
-    margin:10px;
-    overflow: auto;
-    border-color:#BAB2B5;
-    border-style: double;
-    padding:10px;
-    background-color:darkgrey;
+.ui.attached.stackable.three.item.menu {
+    text-emphasis: 10px;
 }
 
 
-.scrollingMenu{
+.ui.form{
+    margin-top:10px;
+    padding:10px;
+    background-color:transparent;
+}
+
+
+.ui.segment.map-search{
+    padding:20px;
+}
+.scrollingMenu {
 padding:10px;
 margin:20px;
 }
@@ -33,6 +39,6 @@ padding-right:30px;
 .search.icon{
     padding-right: 100px;
 }
-.ui.inverted.black.button :hover{
+.ui.black.button :hover{
     color:teal;
 }
