@@ -1,5 +1,6 @@
 
 // This is my JavaScript File
+var itemList = document.getElementsByClassName("scrollingMenu")[0];
 $(document).ready(
   function () {
     $('.ui.dropdown')
