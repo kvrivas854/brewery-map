@@ -40,5 +40,18 @@ padding-right:30px;
     padding-right: 100px;
 }
 .ui.black.button :hover{
-    color:teal;
+    color:rgb(54, 72, 72);
+}
+#about-display{
+    display: none;
+}
+#contact-display{
+    display: none;
+}
+.ui.steps{
+    display: inline;
+    padding: 20px;
+}
+.title{
+    padding: 10px;
 }

@@ -233,6 +233,7 @@ function addMarker () {
    }
 });
 
+
     // Leaflet Formatting
 
     var mymap = L.map('mapid').setView([lat, lon], zoom);
@@ -244,3 +245,25 @@ function addMarker () {
     zoomOffset: -1,
     accessToken: 'pk.eyJ1Ijoic2FyYWhzaGVhMTIiLCJhIjoiY2thdHNobmR4MGRxcTJxb2Nvc2l2MWUxOSJ9.Zlvr0sq1CQFluFfvrrg5UQ'
     }).addTo(mymap);
+
+//About click event
+$("#about-tab").on("click", function (e) {
+  e.preventDefault()
+  $("#about-display").show()
+  $("#search-display").hide()
+  //$("#contact-display").hide()
+})
+//Contact click event
+$("#contact-tab").on("click", function (e) {
+  e.preventDefault()
+  $("#contact-display").show()
+  $("#about-display").hide()
+  $("#search-display").hide()
+})
+//Home-Search click event
+$("#search-tab").on("click", function (e) {
+  e.preventDefault()
+  $("#contact-display").hide()
+  $("#about-display").hide()
+   $("#search-display").show()
+})
