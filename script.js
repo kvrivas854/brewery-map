@@ -63,7 +63,7 @@ $("#search-button").on("click", function (e) {
 
           // Creating the cards if the response has a website URL
           if(response[i].website_url) {
-          var temp = `<div class="ui cards">
+          var temp = `
         <div class="card">
           <div class="content">
     
@@ -77,12 +77,11 @@ $("#search-button").on("click", function (e) {
             </div>
           </div>
           
-              <a href=${response[i].website_url} class="ui basic green button" target="_blank">Visit Website</a>
-        </div>`
+              <a href=${response[i].website_url} class="ui basic green button" target="_blank">Visit Website</a>`
           }
           // Creating the cards if the response does not have a website URL
           else{
-            var temp = `<div class="ui cards">
+            var temp = `
         <div class="card">
           <div class="content">
     
@@ -95,43 +94,67 @@ $("#search-button").on("click", function (e) {
             Address: ${response[i].street}
             </div>
           </div>
-        </div>`
+        `
           }
 
           $("#search-results").append(temp);
 
-          // Sets the coordinates for the markers
-          var nullCheck = response.latitude;
-          if (nullCheck !== null) {
-          var obj = {
-            lat: response[i].latitude,
-            lon: response[i].longitude
-          }
-          coordinatesArray.push(obj);
-          //L.map('mapid').setView(coordinatesArray[0], 13);
-          console.log(coordinatesArray[0]);
-          //L.map('mapid').flyTo(coordinatesArray[0], 13);
-          }
+
+        
+      // using the third API 
+      var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://us1.locationiq.com/v1/search.php?key=pk.5a1f2eca7f72d25b240f2c1c7c7ee282&q=" + breweryName.name + "," + breweryName.street + "," + breweryName.city + "," + breweryName.state + "&format=json",
+        "method": "GET"
+      }
+      
+      $.ajax(settings).done(function (response) {
+
+        for(l=0; l < response.length; l++){
+          console.log(response)
+          console.log(response[l]);
+          console.log(response[l].lat,",", response[l].lon)
+          // Sets the coordinates for the markers - now getting response lat,lon
+      var obj = {
+        lat: response[l].lat,
+        lon: response[l].lon
+      }
+      coordinatesArray.push(obj)
+      console.log(coordinatesArray)
         }
-        addMarker() 
+
+      
+        console.log(response[0].display_name, response[0].lat, response[0].lon);
+
+        var mymap = L.map('mapid').setView([response[0].lat, response[0].lon], 12);
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'pk.eyJ1Ijoic2FyYWhzaGVhMTIiLCJhIjoiY2thdHNobmR4MGRxcTJxb2Nvc2l2MWUxOSJ9.Zlvr0sq1CQFluFfvrrg5UQ'
+        }).addTo(mymap);
+
+        function addMarker () {
+
+          for (var i=0; i < coordinatesArray.length; i++) {
+          
+          lat = coordinatesArray[i].lat;
+          lon = coordinatesArray[i].lon;
+          var marker = L.marker([lat, lon]).addTo(mymap);
+        }};
+
+        addMarker();
+        
+      });
+    }
+
+        //addMarker() 
       });
   }
 
- 
-function addMarker () {
-  
-  for (var i=0; i < coordinatesArray.length; i++) {
-  
-  lat = coordinatesArray[i].lat;
-  lon = coordinatesArray[i].lon;
-    if (lat !== null && lon !== null) {
-  var marker = L.marker([lat, lon]).addTo(mymap);
-  // var popup = L.popup()
-  //   .setLatLng(latlng)
-  //   .setContent('<p>Hello world!<br />This is a nice popup.</p>')
-  //   .openOn(map);
-  //marker.bindPopup(popupContent).openPopup();
-}}};
   
   // if statement to search by zip code
 
@@ -148,7 +171,7 @@ function addMarker () {
 
         console.log(response);
 
-      
+        
 
         // for loop to loop thru results and display on page
         for (var i = 0; i < response.length; i++) {
@@ -158,47 +181,38 @@ function addMarker () {
 
           // Creating the cards if the response has a website URL
           if(response[i].website_url) {
-          var temp = `<div class="ui cards">
-        <div class="card">
-          <div class="content">
-    
-            <div class="header">
-              ${response[i].name}
+            var temp = `<div class="card">
+            <div class="content">
+            <i class="right floated star icon"></i>
+              <div class="header">${response[i].name}</div>
+              <div class="meta"><a>${response[i].brewery_type}</a></div>
+              <div class="description">
+              Phone number: ${response[i].phone}
+              <br>
+              Address: ${response[i].street}
+              </div>
             </div>
-            <div class="description">
-            Phone number: ${response[i].phone}
-            <br>
-            Address: ${response[i].street}
-            </div>
-          </div>
-          
-              <a href=${response[i].website_url} class="ui basic green button" target="_blank">Visit Website</a>
-        </div>`
+              <a href=${response[i].website_url} class="ui basic green button" target="_blank">Visit Website</a>`
           }
           // Creating the cards if the response does not have a website URL
           else{
-            var temp = `<div class="ui cards">
-        <div class="card">
+            var temp = `<div class="card">
           <div class="content">
-    
-            <div class="header">
-              ${response[i].name}
-            </div>
+          <i class="right floated star icon"></i>
+            <div class="header">${response[i].name}</div>
+            <div class="meta"><a>${response[i].brewery_type}</a></div>
             <div class="description">
             Phone number: ${response[i].phone}
             <br>
             Address: ${response[i].street}
             </div>
-          </div>
-        </div>`
+          </div>`
           }
 
           $("#search-results").append(temp);
+}
 
-          
-
-          
-        }
+        // using the third API 
         var settings = {
             "async": true,
             "crossDomain": true,
@@ -223,11 +237,32 @@ function addMarker () {
 
           
             console.log(response[0].display_name, response[0].lat, response[0].lon);
+
+            var mymap = L.map('mapid').setView([response[0].lat, response[0].lon], 12);
+            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1Ijoic2FyYWhzaGVhMTIiLCJhIjoiY2thdHNobmR4MGRxcTJxb2Nvc2l2MWUxOSJ9.Zlvr0sq1CQFluFfvrrg5UQ'
+            }).addTo(mymap);
+
+            function addMarker () {
+  
+              for (var i=0; i < coordinatesArray.length; i++) {
+              
+              lat = coordinatesArray[i].lat;
+              lon = coordinatesArray[i].lon;
+                if (lat !== null && lon !== null) {
+              var marker = L.marker([lat, lon]).addTo(mymap);
+            }}};
+
             addMarker();
             
           });
 
-        addMarker() 
+        //addMarker() 
 
       });
    }
@@ -235,12 +270,13 @@ function addMarker () {
 
     // Leaflet Formatting
 
-    var mymap = L.map('mapid').setView([lat, lon], zoom);
-    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'pk.eyJ1Ijoic2FyYWhzaGVhMTIiLCJhIjoiY2thdHNobmR4MGRxcTJxb2Nvc2l2MWUxOSJ9.Zlvr0sq1CQFluFfvrrg5UQ'
-    }).addTo(mymap);
+    // var mymap = L.map('mapid').setView([lat, lon], zoom);
+    // L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    // attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    // maxZoom: 18,
+    // id: 'mapbox/streets-v11',
+    // tileSize: 512,
+    // zoomOffset: -1,
+    // accessToken: 'pk.eyJ1Ijoic2FyYWhzaGVhMTIiLCJhIjoiY2thdHNobmR4MGRxcTJxb2Nvc2l2MWUxOSJ9.Zlvr0sq1CQFluFfvrrg5UQ'
+    // }).addTo(mymap);
+
