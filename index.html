@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brewery Map</title>
-  
+    <!--FontAwesome Kit-->
+    <script src="https://kit.fontawesome.com/ffc9b37c55.js" crossorigin="anonymous"></script>
    <!--Leaflet Stylesheet-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -22,6 +23,7 @@
 </head>
 <body>
  
+
 <!--Header-->
   <h1>Brewery Map <i class="map marker alternate icon"></i></h1>
 
@@ -33,6 +35,23 @@
       </div>
       <div class="ui bottom attached active tab segment" data-tab="home">
         <div class="ui grid container">
+          <!--Link Steps-->
+          <div class="ui steps">
+            <div class="link step">
+            <i class="far fa-map fa-2x"></i>
+              <div class="content">
+                <div class="title">Search</div>
+                <div class="description">Search by city, state, or zip code.</div>
+              </div>
+            </div>
+            <div class="link step">
+            <i class="fas fa-beer fa-2x"></i>
+              <div class="content">
+                <div class="title">View Breweries</div>
+                <div class="description">Browse breweries by location</div>
+              </div>
+            </div>
+          </div>
             <div class="row">
             <div class="eleven wide column" id="ten-column">
               <div id="mapid" style="height: 600px;"></div>
@@ -175,28 +194,16 @@
   <div class="ui vertical masthead center aligned segment">
   <div class="ui text container">
     <h2>Find Local Breweries Near You</h2>
+     <h4>Brewery map is a web application that maps breweries by specific locations entered by the end user. <br> 
+      Users can search by city and state, or zip code, and be presented with a list of local breweries to visit.</h4>
     <h3>It's easy to get started with Brewery Map</h3>
-    </div>
-    <br>
-    <!--Link Steps-->
-  <div class="ui steps">
-     <div class="link step">
-       <i class="map outline icon"></i>
-       <div class="content">
-         <div class="title">Search</div>
-         <div class="description">Search by city, state, or zip code.</div>
-       </div>
-     </div>
-     <div class="link step">
-       <i class="beer icon"></i>
-       <div class="content">
-         <div class="title">View Breweries</div>
-         <div class="description">Browse breweries by location</div>
-       </div>
-     </div>
-   </div>
+
+  </div>
+  </div>
+  </div>
    </div>
   </div>
+
        <!--Contact-->
   <div class="ui bottom attached tab segment" data-tab="contact">
     <div class="ui vertical masthead center aligned segment">
@@ -204,13 +211,21 @@
       <h2>Contact Information</h2>
       <h3>Link to GitHub Repo</h3>
       <h4>List contributors</h4>
+      <div class="ui text container">
+        <h3 class="title">Questions?</h3>
+        <h4 class="description">Click <a href="mailto:akeemflavors@gmail.com,kellyv.rivas@gmail.com,sshealy124@gmail.com,jsuderman1@gmail.com?subject=Brewery Map Inquiry">here</a> to send us an email.</h4>
+        <h4 class="description">View our GitHub repository <a href="https://github.com/kvrivas854/brewery-map">here.</a></h4>
+        <h3 class="title">Credits</h3>
+        <h5 class="description">Brewery Map was created by <br> 
+         Kelly Rivas, Sarah Shealy, Justin Suderman, and Akeem Flavors.</h5>
+      </div>
     </div>
     </div>
   </div> 
   </div>
 
    <!--jQuery-->
-   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
    <!--Semantic UI-->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
    <!--External JS-->
