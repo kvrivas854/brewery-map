@@ -270,26 +270,12 @@ $("#search-button").on("click", function (e) {
     accessToken: 'pk.eyJ1Ijoic2FyYWhzaGVhMTIiLCJhIjoiY2thdHNobmR4MGRxcTJxb2Nvc2l2MWUxOSJ9.Zlvr0sq1CQFluFfvrrg5UQ'
     }).addTo(mymap);
 
-//About click event
-$("#about-tab").on("click", function (e) {
-  e.preventDefault()
-  $("#about-display").show()
-  $("#search-display").hide()
-  //$("#contact-display").hide()
-})
-//Contact click event
-$("#contact-tab").on("click", function (e) {
-  e.preventDefault()
-  $("#contact-display").show()
-  $("#about-display").hide()
-  $("#search-display").hide()
-})
-//Home-Search click event
-$("#search-tab").on("click", function (e) {
-  e.preventDefault()
-  $("#contact-display").hide()
-  $("#about-display").hide()
-   $("#search-display").show()
-})
+//Menu Item Toggle
+$("#search-tab,#about-tab").on("click", function(e){
+
+  e.preventDefault();
+  $("#search-display").toggle();
+  $("#about-display").toggle();
+  })
 
 
