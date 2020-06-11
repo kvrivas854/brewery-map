@@ -39,10 +39,10 @@ Instructions:
 3. Search results are listed below the map and markers placed on their location.
 
 CSS
-- The CSS is linked using an external style sheet and utilizes Semantic UI.
+- The CSS is linked using an external style sheet and utilizes [Semantic UI](https://semantic-ui.com/).
 
 JavaScript
-- The JavaScript is linked using an external script and utilizes the Leaflet, LocationIQ, and Open Brewery DB APIs.
+- The JavaScript is linked using an external script and utilizes the [Leaflet](https://leafletjs.com/), [LocationIQ](https://locationiq.com/), and [Open Brewery DB](https://www.openbrewerydb.org/) APIs.
 
 ### Credits
 Brewery Map was created by @kvrivas854, @sarahshea12, @jsuderman, and @aflavors. Feel free to contact us! :v:
