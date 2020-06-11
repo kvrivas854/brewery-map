@@ -53,3 +53,6 @@ padding-right:30px;
 .title{
     padding: 10px;
 }
+.hide {
+    visibility: hidden;
+}
