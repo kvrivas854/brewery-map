@@ -184,6 +184,7 @@ $("#search-button").on("click", function (e) {
             </div>
               <a href=${response[i].website_url} class="ui black button" target="_blank">Visit Website</a>`
           }
+          
           // Creating the cards if the response does not have a website URL
           else{
             var temp = `<div class="card">
@@ -257,7 +258,12 @@ $("#search-button").on("click", function (e) {
    }
 });
 
+// var faveButton = document.getElementsByClassName(".star.icon")
 
+$("starIcon").on("click", function (e) {
+  e.preventDefault()
+  $(".warning").empty()
+})
     // Leaflet Formatting
 
 
