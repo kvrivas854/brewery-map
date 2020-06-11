@@ -1,1 +1,2 @@
 # brewery-map
+This app is a fully functional and responsive "Brewery Map". You are able to find breweries by city and state or ZIP code and also have the option to filter accommodations in the search form provided. Once you click search, the map will zoom and use markers to pin point locations. The page will also scroll down to the results that are presented in card form. The cards will include information about the brewery/breweries. The information may include the brewery's phone number, address, type of brewery, and a link to their website.

@@ -23,225 +23,209 @@
 </head>
 <body>
  
- 
-  <!--Header-->
-<h1>Brewery Map <i class="map marker alternate icon"></i></h1>
-<div id="search-display">
-<container>
-   <div class="ui tabular menu">
-    <div class="ui container">
-    
-       <a class="active item" data-tab="home" id="search-tab">
-        <i class="fas fa-search"></i> Search
-       </a>
-       <a class="item" data-tab="about" id="about-tab">
-        <i class="fas fa-beer"></i> About
-      </a>
-      <a class="item" data-tab="contact" id="contact-tab" href="mailto:akeemflavors@gmail.com,kellyv.rivas@gmail.com,sshealy124@gmail.com,jsuderman1@gmail.com?subject=Brewery Map Inquiry">
-        <i class="far fa-envelope"></i> Contact
-      </a>
 
+<!--Header-->
+  <h1>Brewery Map <i class="map marker alternate icon"></i></h1>
+
+  <!--Menu Nav Bar-->
+    <div class="ui inverted attached stackable three item menu">
+        <a class="active item" data-tab="home"><i class="home icon"></i>Home</a>
+        <a class="item" data-tab="about"><i class="beer icon"></i>About</a>
+        <a class="item" data-tab="contact"><i class="mail icon"></i>Contact</a>
+      </div>
+      <div class="ui bottom attached active tab segment" data-tab="home">
+        <div class="ui grid container">
+            <div class="row">
+            <div class="eleven wide column" id="ten-column">
+              <div id="mapid" style="height: 600px;"></div>
+            </div>
+            <div class="five wide column" id="six-column">
+            
+               <!--Search Form-->
+            
+             <form class="ui form" style="height: 600px;">
+                <div class="ui floating dropdown labeled icon button">
+                    <i class="filter icon"></i>
+                    <span class="text">Filter Posts</span>
+                    <div class="menu">
+                      <div class="ui icon search input">
+                        <i class="search icon"></i>
+                        <input type="text" placeholder="Select filter...">
+                      </div>
+                      <div class="divider"></div>
+                      <div class="header">
+                        <i class="tags icon"></i>
+                        Choose:
+                      </div>
+                      <div class="scrollingMenu">
+                        <div class="item">
+                          <div class="ui red empty circular label"></div>
+                          Pet Friendly
+                        </div>
+                        <div class="item">
+                          <div class="ui blue empty circular label"></div>
+                          Food Truck
+                        </div>
+                        <div class="item">
+                          <div class="ui black empty circular label"></div>
+                          Food Service
+                        </div>
+                        <div class="item">
+                          <div class="ui green empty circular label"></div>
+                          Tours
+                        </div>
+                        <div class="item">
+                          <div class="ui purple empty circular label"></div>
+                          Patio Seating
+                        </div>
+                        <div class="item">
+                          <div class="ui orange empty circular label"></div>
+                          Micro
+                        </div>
+                        <div class="item">
+                          <div class="ui yellow empty circular label"></div>
+                          Regional
+                        </div>
+                        <div class="item">
+                          <div class="ui pink empty circular label"></div>
+                          Brew pub
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+               <div class="field">
+                 <label>Search by City</label>
+                 <input type="text" name="first-name" placeholder="City" id="city-input">
+               </div>
+               <!-- // added new id for search error -->
+               <div class="field" id="state-input">
+                   <label>Search by State</label>
+                   <select id="state-options" class="ui dropdown">
+                       <option value="">State</option>
+                       <option value="Alabama">Alabama</option>
+                       <option value="Alaska">Alaska</option>
+                       <option value="Arizona">Arizona</option>
+                       <option value="Arkansas">Arkansas</option>
+                       <option value="California">California</option>
+                       <option value="Colorado">Colorado</option>
+                       <option value="Connecticut">Connecticut</option>
+                       <option value="Delaware">Delaware</option>
+                       <option value="District Of Columbia">District Of Columbia</option>
+                       <option value="Florida">Florida</option>
+                       <option value="Georgia">Georgia</option>
+                       <option value="Hawaii">Hawaii</option>
+                       <option value="Idaho">Idaho</option>
+                       <option value="Illinois">Illinois</option>
+                       <option value="Indiana">Indiana</option>
+                       <option value="Iowa">Iowa</option>
+                       <option value="Kansas">Kansas</option>
+                       <option value="Kentucky">Kentucky</option>
+                       <option value="Louisiana">Louisiana</option>
+                       <option value="Maine">Maine</option>
+                       <option value="Maryland">Maryland</option>
+                       <option value="Massachusetts">Massachusetts</option>
+                       <option value="Michigan">Michigan</option>
+                       <option value="Minnesota">Minnesota</option>
+                       <option value="Mississippi">Mississippi</option>
+                       <option value="Missouri">Missouri</option>
+                       <option value="Montana">Montana</option>
+                       <option value="Nebraska">Nebraska</option>
+                       <option value="Nevada">Nevada</option>
+                       <option value="New Hampshire">New Hampshire</option>
+                       <option value="New Jersey">New Jersey</option>
+                       <option value="New Mexico">New Mexico</option>
+                       <option value="New York">New York</option>
+                       <option value="North Carolina">North Carolina</option>
+                       <option value="North Dakota">North Dakota</option>
+                       <option value="Ohio">Ohio</option>
+                       <option value="Oklahoma">Oklahoma</option>
+                       <option value="Oregon">Oregon</option>
+                       <option value="Pennsylvania">Pennsylvania</option>
+                       <option value="Rhode Island">Rhode Island</option>
+                       <option value="South Carolina">South Carolina</option>
+                       <option value="South Dakota">South Dakota</option>
+                       <option value="Tennessee">Tennessee</option>
+                       <option value="Texas">Texas</option>
+                       <option value="Utah">Utah</option>
+                       <option value="Vermont">Vermont</option>
+                       <option value="Virginia">Virginia</option>
+                       <option value="Washington">Washington</option>
+                       <option value="West Virginia">West Virginia</option>
+                       <option value="Wisconsin">Wisconsin</option>
+                       <option value="Wyoming">Wyoming</option>
+                   </select>
+               </div>
+               <div class="field">
+                 <label>Search by Zip Code</label>
+                 <input type="text" name="zip-code" placeholder="Zip Code" id="zipcode-input">
+               </div>
+               <button class="ui black button" type="submit" id="search-button">Search</button>
+               <button class="ui black button">Clear</button>
+         </form>
+        </div> 
+      </div>
     </div>
-  </div>
-  </container>
-
-  
-
-  <div class="ui grid container">
     <div class="row">
-    <div class="ten wide column" id="ten-column">
-      <div id="mapid" style="height: 600px;"></div>
-    </div>
-    <div class="six wide column" id="six-column">
-    
-       <!--Search Form-->
-    
-     <form class="ui form" style="height: 600px;">
-        <div class="ui floating dropdown labeled icon button">
-            <i class="filter icon"></i>
-            <span class="text">Filter Posts</span>
-            <div class="menu">
-              <div class="ui icon search input">
-                <i class="search icon"></i>
-                <input type="text" placeholder="Select filter...">
+      <div class="sixteen wide column">
+      <div id="search-results" class="ui cards"></div>
+      </div>
+      </div>
+  </div>
+      
+    <!--About-->
+    <div class="ui bottom attached tab segment" data-tab="about">
+      <div class="ui vertical masthead center aligned segment">
+        <div class="ui text container">
+          <h2>Find Local Breweries Near You</h2>
+          <h4>Brewery map is a web application that maps breweries by specific locations entered by the end user. <br> 
+            Users can search by city and state, or zip code, and be presented with a list of local breweries to visit.</h4>
+          <h3>It's easy to get started with Brewery Map</h3>
+
+            <!--Link Steps-->
+            <div class="ui steps">
+              <div class="link step">
+              <i class="far fa-map fa-2x"></i>
+                <div class="content">
+                  <div class="title">Search</div>
+                  <div class="description">Search by city, state, or zip code.</div>
+                </div>
               </div>
-              <div class="divider"></div>
-              <div class="header">
-                <i class="tags icon"></i>
-                Choose:
-              </div>
-              <div class="scrollingMenu">
-                <div class="item">
-                  <div class="ui red empty circular label"></div>
-                  Pet Friendly
-                </div>
-                <div class="item">
-                  <div class="ui blue empty circular label"></div>
-                  Food Truck
-                </div>
-                <div class="item">
-                  <div class="ui black empty circular label"></div>
-                  Food Service
-                </div>
-                <div class="item">
-                  <div class="ui green empty circular label"></div>
-                  Tours
-                </div>
-                <div class="item">
-                  <div class="ui purple empty circular label"></div>
-                  Patio Seating
-                </div>
-                <div class="item">
-                  <div class="ui orange empty circular label"></div>
-                  Micro
-                </div>
-                <div class="item">
-                  <div class="ui yellow empty circular label"></div>
-                  Regional
-                </div>
-                <div class="item">
-                  <div class="ui pink empty circular label"></div>
-                  Brew pub
+              <div class="link step">
+              <i class="fas fa-beer fa-2x"></i>
+                <div class="content">
+                  <div class="title">View Breweries</div>
+                  <div class="description">Browse breweries by location</div>
                 </div>
               </div>
             </div>
-          </div>
-       <div class="field">
-         <label>Search by City</label>
-         <input type="text" name="first-name" placeholder="City" id="city-input">
-       </div>
-       <!-- // added new id for search error -->
-       <div class="field" id="state-input">
-           <label>Search by State</label>
-           <select id="state-options" class="ui dropdown">
-               <option value="">State</option>
-               <option value="Alabama">Alabama</option>
-               <option value="Alaska">Alaska</option>
-               <option value="Arizona">Arizona</option>
-               <option value="Arkansas">Arkansas</option>
-               <option value="California">California</option>
-               <option value="Colorado">Colorado</option>
-               <option value="Connecticut">Connecticut</option>
-               <option value="Delaware">Delaware</option>
-               <option value="District Of Columbia">District Of Columbia</option>
-               <option value="Florida">Florida</option>
-               <option value="Georgia">Georgia</option>
-               <option value="Hawaii">Hawaii</option>
-               <option value="Idaho">Idaho</option>
-               <option value="Illinois">Illinois</option>
-               <option value="Indiana">Indiana</option>
-               <option value="Iowa">Iowa</option>
-               <option value="Kansas">Kansas</option>
-               <option value="Kentucky">Kentucky</option>
-               <option value="Louisiana">Louisiana</option>
-               <option value="Maine">Maine</option>
-               <option value="Maryland">Maryland</option>
-               <option value="Massachusetts">Massachusetts</option>
-               <option value="Michigan">Michigan</option>
-               <option value="Minnesota">Minnesota</option>
-               <option value="Mississippi">Mississippi</option>
-               <option value="Missouri">Missouri</option>
-               <option value="Montana">Montana</option>
-               <option value="Nebraska">Nebraska</option>
-               <option value="Nevada">Nevada</option>
-               <option value="New Hampshire">New Hampshire</option>
-               <option value="New Jersey">New Jersey</option>
-               <option value="New Mexico">New Mexico</option>
-               <option value="New York">New York</option>
-               <option value="North Carolina">North Carolina</option>
-               <option value="North Dakota">North Dakota</option>
-               <option value="Ohio">Ohio</option>
-               <option value="Oklahoma">Oklahoma</option>
-               <option value="Oregon">Oregon</option>
-               <option value="Pennsylvania">Pennsylvania</option>
-               <option value="Rhode Island">Rhode Island</option>
-               <option value="South Carolina">South Carolina</option>
-               <option value="South Dakota">South Dakota</option>
-               <option value="Tennessee">Tennessee</option>
-               <option value="Texas">Texas</option>
-               <option value="Utah">Utah</option>
-               <option value="Vermont">Vermont</option>
-               <option value="Virginia">Virginia</option>
-               <option value="Washington">Washington</option>
-               <option value="West Virginia">West Virginia</option>
-               <option value="Wisconsin">Wisconsin</option>
-               <option value="Wyoming">Wyoming</option>
-           </select>
-       </div>
-       <div class="field">
-         <label>Search by Zip Code</label>
-         <input type="text" name="zip-code" placeholder="Zip Code" id="zipcode-input">
-       </div>
-       <button class="ui black button" type="submit" id="search-button">Search</button>
-       <button class="ui black button">Clear</button>
-     </form>
-
-    
-    </div> 
-  </div>
-</div>
-<div class="row">
-  <div class="sixteen wide column">
-   <div id="search-results" class="ui cards"></div>
-  </div>
- </div>
-</div>
-  <!--About-->
-  <div id="about-display">
-    <container>
-      <div class="ui tabular menu">
-       <div class="ui container">
-       
-          <a class="item" data-tab="home" id="search-tab">
-            <i class="fas fa-search"></i> Search
-          </a>
-          <a class="active item" data-tab="about" id="about-tab">
-            <i class="fas fa-beer"></i> About
-         </a>
-         <a class="item" data-tab="contact" id="contact-tab" href="mailto:akeemflavors@gmail.com,kellyv.rivas@gmail.com,sshealy124@gmail.com,jsuderman1@gmail.com?subject=Brewery Map Inquiry">
-          <i class="far fa-envelope"></i> Contact
-        </a>
-   
-       </div>
-     </div>
-     </container>
-   <div class="ui vertical masthead center aligned segment">
-    <div class="ui text container">
-      <h2>Find Local Breweries Near You</h2>
-      <h4>Brewery map is a web application that maps breweries by specific locations entered by the end user. <br> 
-      Users can search by city and state, or zip code, and be presented with a list of local breweries to visit.</h4>
-      <h2>It's easy to get started with Brewery Map</h2>
+        </div>
+      </div>
     </div>
-    <br>
-    <!--Link Steps-->
-    <div class="ui steps">
-     <div class="link step">
-      <i class="far fa-map fa-2x"></i>
-       <div class="content">
-         <div class="title">Search</div>
-         <div class="description">Search by city, state, or zip code.</div>
-       </div>
-     </div>
-     <div class="link step">
-      <i class="fas fa-beer fa-2x"></i>
-       <div class="content">
-         <div class="title">View Breweries</div>
-         <div class="description">Browse breweries by location</div>
-       </div>
-     </div>
-   </div>
-   <div class="ui text container">
-     <h3 class="title">Questions?</h3>
-     <h4 class="description">Click <a href="mailto:akeemflavors@gmail.com,kellyv.rivas@gmail.com,sshealy124@gmail.com,jsuderman1@gmail.com?subject=Brewery Map Inquiry">here</a> to send us an email.</h4>
-     <h4 class="description">View our GitHub repository <a href="https://github.com/kvrivas854/brewery-map">here.</a></h4>
-     <h3 class="title">Credits</h3>
-     <h5 class="description">Brewery Map was created by <br> 
-      Kelly Rivas, Sarah Shealy, Justin Suderman, and Akeem Flavors.</h5>
-   </div>
    </div>
   </div>
-  <!--jQuery-->
-   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+       <!--Contact-->
+  <div class="ui bottom attached tab segment" data-tab="contact">
+    <div class="ui vertical masthead center aligned segment">
+    <!-- <div class="ui text container"> -->
+      <!-- <h2>Contact Information</h2>
+      <h3>Link to GitHub Repo</h3>
+      <h4>List contributors</h4> -->
+      <div class="ui text container">
+        <h3 class="title">Questions?</h3>
+        <h4 class="description">Click <a href="mailto:akeemflavors@gmail.com,kellyv.rivas@gmail.com,sshealy124@gmail.com,jsuderman1@gmail.com?subject=Brewery Map Inquiry">here</a> to send us an email.</h4>
+        <h4 class="description">View our GitHub repository <a href="https://github.com/kvrivas854/brewery-map">here.</a></h4>
+        <h3 class="title">Credits</h3>
+        <h5 class="description">Brewery Map was created by <br> 
+         Kelly Rivas, Sarah Shealy, Justin Suderman, and Akeem Flavors.</h5>
+      </div>
+    <!-- </div> -->
+    </div>
+  </div> 
+  </div>
+
+   <!--jQuery-->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
    <!--Semantic UI-->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
    <!--External JS-->

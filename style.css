@@ -1,9 +1,9 @@
-This is my CSS file
+/* This is my CSS file */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@900&display=swap');
 
 body{
     height:100%;
-    width:100;
+    width:100%;
     margin: 10px;
     background-color:white;
 }
@@ -11,21 +11,19 @@ h1{ color:teal;
     text-align:center;
     font-family: 'Playfair Display SC', serif;
 }
-.ui.attached.stackable.three.item.menu :hover{
-color:teal;
-}
+
 .ui.attached.stackable.three.item.menu {
     text-emphasis: 10px;
 }
-
+.star.icon{
+    color:gold;
+}
 
 .ui.form{
     margin-top:10px;
     padding:10px;
     background-color:transparent;
 }
-
-
 .ui.segment.map-search{
     padding:20px;
 }
