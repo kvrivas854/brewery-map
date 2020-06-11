@@ -13,7 +13,7 @@ Brewery map is an application that maps breweries by specific locations entered 
 
 ### Overview
 This application presents the user with local brewery locations, so that they can plan trips to these destinations accordingly.
-The user searches for locations by zipcode, and breweries within that zipcode are listed and appear on a localized map display. Listed information includes the brewery's name, address, phone number, the type of brewery that they are, and a link to their website.
+The user searches for locations by zip code, and breweries within that zipcode are listed and appear on a localized map display. Listed information includes the brewery's name, address, phone number, the type of brewery that they are, and a link to their website.
 
 ### User-Story
 As a frequent traveler and avid beer drinker, 
@@ -24,8 +24,8 @@ so that I can plan in advance what breweries I should visit before I travel to a
 This application has great potential to become a unique and valuable resource. Future development areas include:
 
 - Map markers that display each brewery's name.
-- Activing filter form so that breweries can be filtered by certain tags or properties.
-- A hover feature on the listed results. Hovering over the listed brewery will illuminate its marker on the Leaflet map.
+- Activating filter form so that breweries can be filtered by certain tags or properties.
+- A hover feature on the listed results. Hovering over the listed brewery will illuminate the corresponding marker on the Leaflet map.
 - A profile log in system to keep track of favorite and visited breweries.
 - A personalized rating system for visited breweries in said profile.
 
@@ -34,7 +34,7 @@ Many of these areas for future developemnt rely on exploring alternative brewery
 ### Notes
 
 Instructions:
-1. When the user opens the browser they will be presented with a search form and a blank map of the United State of America.
+1. When the user opens the browser they will be presented with a search form to search by zip code.
 2. User enters the zip code of their intended travel destinations and presses the search button.
 3. Search results are listed below the map and markers placed on their location.
 
