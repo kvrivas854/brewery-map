@@ -2,7 +2,7 @@
 
 Brewery map is an application that maps breweries by specific locations entered by the end user. Users can search by zip code and be presented with a list of local breweries to visit.
 
-[GitHub Pages Link](Insert Deployed Link)
+[GitHub Pages Link](https://kvrivas854.github.io/brewery-map/)
 
 ## Table of Contents
 - [Overview](#Overview)
