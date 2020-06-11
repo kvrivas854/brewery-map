@@ -1,0 +1,29 @@
+body {
+    margin: 30px;
+    background-color: lightgrey;
+  }
+
+  .ui.move.reveal {
+    width: 290px;
+    white-space: normal;
+  }
+
+  .ui.card {
+    height: 420px;
+  }
+
+  .ui.labeled.icon.menu .item{
+    min-width: 33.3333%;
+    max-width: 33.3333%;
+    font-size: 0.8em;
+    padding: 6px 2px;
+  }
+
+  .ui.pointing.menu {
+    cursor: pointer;
+  }
+
+  .ui.tab {
+    height: 320px;
+    overflow-y: auto;
+  }

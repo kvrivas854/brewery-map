@@ -60,7 +60,8 @@ $("#search-button").on("click", function (e) {
 
           // Creating the cards if the response has a website URL
           if(response[i].website_url) {
-            var temp = `<div class="card">
+            var temp = `
+            <div class="card">
             <div class="content">
             <i class="right floated star icon"></i>
               <div class="header">${response[i].name}</div>
@@ -71,7 +72,7 @@ $("#search-button").on("click", function (e) {
               Address: ${response[i].street}
               </div>
             </div>
-              <a href=${response[i].website_url} class="ui basic green button" target="_blank">Visit Website</a>`
+              <a href=${response[i].website_url} class="ui black button" target="_blank">Visit Website</a>`
           }
           // Creating the cards if the response does not have a website URL
           else{
@@ -86,7 +87,7 @@ $("#search-button").on("click", function (e) {
               Address: ${response[i].street}
               </div>
             </div>
-              <a href=${response[i].website_url} class="ui basic green button" target="_blank">Visit Website</a>`
+              <a href=${response[i].website_url} class="ui black button" target="_blank">Visit Website</a>`
           }
 
           $("#search-results").append(temp);
@@ -181,7 +182,7 @@ $("#search-button").on("click", function (e) {
               Address: ${response[i].street}
               </div>
             </div>
-              <a href=${response[i].website_url} class="ui basic green button" target="_blank">Visit Website</a>`
+              <a href=${response[i].website_url} class="ui black button" target="_blank">Visit Website</a>`
           }
           // Creating the cards if the response does not have a website URL
           else{
@@ -270,26 +271,8 @@ $("#search-button").on("click", function (e) {
     accessToken: 'pk.eyJ1Ijoic2FyYWhzaGVhMTIiLCJhIjoiY2thdHNobmR4MGRxcTJxb2Nvc2l2MWUxOSJ9.Zlvr0sq1CQFluFfvrrg5UQ'
     }).addTo(mymap);
 
-//About click event
-$("#about-tab").on("click", function (e) {
-  e.preventDefault()
-  $("#about-display").show()
-  $("#search-display").hide()
-  //$("#contact-display").hide()
-})
-//Contact click event
-$("#contact-tab").on("click", function (e) {
-  e.preventDefault()
-  $("#contact-display").show()
-  $("#about-display").hide()
-  $("#search-display").hide()
-})
-//Home-Search click event
-$("#search-tab").on("click", function (e) {
-  e.preventDefault()
-  $("#contact-display").hide()
-  $("#about-display").hide()
-   $("#search-display").show()
-})
+//Menu Item Toggle
+$('.menu .item').tab();
+
 
 
