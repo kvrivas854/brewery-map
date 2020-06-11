@@ -17,6 +17,9 @@ $(document).ready(
   // Search button click event
 $("#search-button").on("click", function (e) {
   e.preventDefault()
+  $('html, body').animate({
+    scrollTop: $("#search-results").offset().top
+}, 2000);
   $(".warning").empty()
 
   var byCity = $("#city-input").val();
