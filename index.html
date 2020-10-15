@@ -36,8 +36,8 @@
         </a>
       </div>
       <div class="ui bottom attached active tab segment" data-tab="home">
-        <div class="ui stackable grid container">
-          <div class="six wide tablet three wide computer column" id="three-column">
+        <div class="ui grid container">
+          <div class="six wide column">
           <!--Search Form-->
           <form class="ui form" style="height: 600px;">
             <div class="ui floating dropdown labeled icon button">
@@ -95,6 +95,9 @@
             </div>
             <button class="ui black button" type="submit" id="search-button">Search</button>
             <button class="ui black button">Clear</button>
+            <div class="container">
+              <div id="search-results" class="ui cards search"></div>
+            </div>
             <div class="field hide">
               <label>Search by City</label>
               <input type="text" name="first-name" placeholder="City" id="city-input">
@@ -157,16 +160,12 @@
               </select> 
             </div>
           </form>
+          
         </div> 
         <!--Map-->
-        <div class="thirteen wide column" id="thirteen-column">
-          <div id="mapid" style="height: 600px;"></div>
+        <div class="ten wide column">
+          <div id="mapid" style="height: 600px;" class="map"></div>
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="sixteen wide column">
-        <div id="search-results" class="ui cards"></div>
       </div>
     </div>
   </div>
