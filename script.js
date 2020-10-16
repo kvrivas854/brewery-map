@@ -63,7 +63,7 @@ $("#search-button").on("click", function (e) {
             var temp = `
             <div class="card">
             <div class="content">
-            <i class="right floated star icon"></i>
+
               <div class="header">${response[i].name}</div>
               <div class="meta"><a>${response[i].brewery_type}</a></div>
               <div class="description">
@@ -78,7 +78,7 @@ $("#search-button").on("click", function (e) {
           else{
             var temp = `<div class="card">
             <div class="content">
-            <i class="right floated star icon"></i>
+
               <div class="header">${response[i].name}</div>
               <div class="meta"><a>${response[i].brewery_type}</a></div>
               <div class="description">
@@ -173,7 +173,7 @@ $("#search-button").on("click", function (e) {
           if(response[i].website_url) {
             var temp = `<div class="card">
             <div class="content">
-            <i class="right floated star icon"></i>
+
               <div class="header">${response[i].name}</div>
               <div class="meta"><a>${response[i].brewery_type}</a></div>
               <div class="description">
@@ -189,7 +189,6 @@ $("#search-button").on("click", function (e) {
           else{
             var temp = `<div class="card">
           <div class="content">
-          <i class="right floated star icon"></i>
             <div class="header">${response[i].name}</div>
             <div class="meta"><a>${response[i].brewery_type}</a></div>
             <div class="description">
