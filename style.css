@@ -4,14 +4,21 @@
 body{
     height:100%;
     width:100%;
-    margin: 10px;
     background-color:white;
 }
-h1{ color:teal;
+.header{ 
+    font-size:30px;
+    color:teal;
     text-align:center;
     font-family: 'Playfair Display SC', serif;
 }
+i.icon.pin {
+position: relative;
+}
 
+.ui.segment.attached {
+    width:100%;
+}
 .ui.attached.stackable.three.item.menu {
     text-emphasis: 10px;
 }
@@ -24,6 +31,7 @@ h1{ color:teal;
     padding:10px;
     background-color:transparent;
     overflow:scroll;
+    height: calc(100vh - 145px);
 }
 .scrollingMenu {
 padding:10px;
@@ -60,17 +68,12 @@ padding-right:30px;
     right: 0;
     z-index: 600;
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 145px);
     overflow: hidden;
 }
 .container{
     margin-top:20px;
 }
 .overflow-scroll {
-    overflow:scroll;
-}
-@media (min-width: 768px){
-    .map {
-    width: calc(100vw - 400px);
-    }
+    overflow:auto;
 }
