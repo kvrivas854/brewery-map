@@ -17,9 +17,7 @@
       </head>
       <body>    
       <!--Header-->
-      <h1> Brewery Map 
-        <i class="map marker alternate icon"></i>
-      </h1>
+      <div class="header">Brewery Map<i class="map pin icon"></i></div>
       <!--Menu Nav Bar-->
       <div class="ui inverted attached stackable three item menu">
         <a class="active item" data-tab="home">
@@ -39,7 +37,7 @@
         <div class="ui grid container">
           <div class="six wide column">
           <!--Search Form-->
-          <form class="ui form" style="height: 600px;">
+          <form class="ui form">
             <div class="ui floating dropdown labeled icon button">
               <i class="filter icon"></i>
               <span class="text">Filter Posts</span>
@@ -164,7 +162,7 @@
         </div> 
         <!--Map-->
         <div class="ten wide column">
-          <div id="mapid" style="height: 600px;" class="map"></div>
+          <div id="mapid" class="map"></div>
         </div>
       </div>
     </div>
