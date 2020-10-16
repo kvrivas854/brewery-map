@@ -17,29 +17,18 @@ $(document).ready(
   // Search button click event
 $("#search-button").on("click", function (e) {
   e.preventDefault()
-  $('html, body').animate({
-    scrollTop: $("#search-results").offset().top
-}, 2000);
   $(".warning").empty()
 
-  var byCity = $("#city-input").val();
-  var byState = $("#state-options").val();
+
   var byZip = $("#zipcode-input").val();
-  var queryURL = "https://api.openbrewerydb.org/breweries?" + "by_city=" + byCity + "&by_state=" + byState + "&by_postal=" + byZip;
+  var queryURL = "https://api.openbrewerydb.org/breweries?" + "&by_postal=" + byZip;
 
   // error message for when both city & state aren't inputted
-  if ((byCity ==="" &&byState!=="") || (byCity!==""&&byState==="")) {
-    let div = $("<div>")
-    div.attr("class","warning")
-    div.text("You must fill out state and city OR zip code")
-
-    $("#state-input").append(div)
-  }
 
 
   // if statement for search by city & state
 
-  if ((byCity !== "" && byState !== "") && byZip === "") {
+  if (byZip === "") {
 
   $.ajax({
     url: queryURL,
@@ -150,7 +139,7 @@ $("#search-button").on("click", function (e) {
   
   // if statement to search by zip code
 
-  if ((byCity === "" && byState === "") && byZip !== "") {
+  if (byZip !== "") {
 
     $.ajax({
       url: queryURL,
