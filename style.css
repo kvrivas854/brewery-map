@@ -12,6 +12,9 @@ body{
     text-align:center;
     font-family: 'Playfair Display SC', serif;
 }
+.ui.cards>.card{
+    width:100%;
+}
 i.icon.pin {
 position: relative;
 }
@@ -30,7 +33,7 @@ position: relative;
     margin-top:10px;
     padding:10px;
     background-color:transparent;
-    overflow:scroll;
+    overflow:auto;
     height: calc(100vh - 145px);
 }
 .scrollingMenu {
