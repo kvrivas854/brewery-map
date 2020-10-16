@@ -249,6 +249,11 @@ $("#search-button").on("click", function (e) {
 
 // var faveButton = document.getElementsByClassName(".star.icon")
 
+$("starIcon").on("click", function (e) {
+  e.preventDefault()
+  $(".warning").empty()
+})
+
 //Menu Item Toggle
 $('.menu .item').tab();
 
