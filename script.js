@@ -17,18 +17,29 @@ $(document).ready(
   // Search button click event
 $("#search-button").on("click", function (e) {
   e.preventDefault()
+  $('html, body').animate({
+    scrollTop: $("#search-results").offset().top
+}, 2000);
   $(".warning").empty()
 
-
+  var byCity = $("#city-input").val();
+  var byState = $("#state-options").val();
   var byZip = $("#zipcode-input").val();
-  var queryURL = "https://api.openbrewerydb.org/breweries?" + "&by_postal=" + byZip;
+  var queryURL = "https://api.openbrewerydb.org/breweries?" + "by_city=" + byCity + "&by_state=" + byState + "&by_postal=" + byZip;
 
   // error message for when both city & state aren't inputted
+  if ((byCity ==="" &&byState!=="") || (byCity!==""&&byState==="")) {
+    let div = $("<div>")
+    div.attr("class","warning")
+    div.text("You must fill out state and city OR zip code")
+
+    $("#state-input").append(div)
+  }
 
 
   // if statement for search by city & state
 
-  if (byZip === "") {
+  if ((byCity !== "" && byState !== "") && byZip === "") {
 
   $.ajax({
     url: queryURL,
@@ -52,7 +63,7 @@ $("#search-button").on("click", function (e) {
             var temp = `
             <div class="card">
             <div class="content">
-
+            <i class="right floated star icon"></i>
               <div class="header">${response[i].name}</div>
               <div class="meta"><a>${response[i].brewery_type}</a></div>
               <div class="description">
@@ -67,7 +78,7 @@ $("#search-button").on("click", function (e) {
           else{
             var temp = `<div class="card">
             <div class="content">
-
+            <i class="right floated star icon"></i>
               <div class="header">${response[i].name}</div>
               <div class="meta"><a>${response[i].brewery_type}</a></div>
               <div class="description">
@@ -139,7 +150,7 @@ $("#search-button").on("click", function (e) {
   
   // if statement to search by zip code
 
-  if (byZip !== "") {
+  if ((byCity === "" && byState === "") && byZip !== "") {
 
     $.ajax({
       url: queryURL,
@@ -162,7 +173,7 @@ $("#search-button").on("click", function (e) {
           if(response[i].website_url) {
             var temp = `<div class="card">
             <div class="content">
-
+            <i class="right floated star icon"></i>
               <div class="header">${response[i].name}</div>
               <div class="meta"><a>${response[i].brewery_type}</a></div>
               <div class="description">
@@ -178,6 +189,7 @@ $("#search-button").on("click", function (e) {
           else{
             var temp = `<div class="card">
           <div class="content">
+          <i class="right floated star icon"></i>
             <div class="header">${response[i].name}</div>
             <div class="meta"><a>${response[i].brewery_type}</a></div>
             <div class="description">
